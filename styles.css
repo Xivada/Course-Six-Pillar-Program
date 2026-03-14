@@ -405,7 +405,7 @@ h1 {
     background: rgba(30, 77, 90, 0.05);
 }
 
-/* Video CTA Card */
+/* Video CTA Card (Fallback) */
 .video-cta-card {
     background: linear-gradient(135deg, rgba(30, 77, 90, 0.05) 0%, rgba(204, 158, 77, 0.05) 100%);
     border: 2px dashed var(--border);
@@ -418,6 +418,53 @@ h1 {
     display: block;
     cursor: pointer;
 }
+
+/* Premium Video Player */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 2rem 0;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: var(--shadow-deep);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.premium-video {
+    width: 100%;
+    display: block;
+    border-radius: 24px;
+    aspect-ratio: 16 / 9;
+}
+
+.video-status-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(30, 77, 90, 0.95);
+    padding: 2rem;
+    border-radius: 24px;
+    text-align: center;
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--accent);
+    z-index: 5;
+    transition: opacity 0.5s ease;
+}
+
+.premium-video:not([src=""]),
+.premium-video[src]:not([src*="undefined"]) ~ .video-status-overlay {
+    opacity: 0;
+}
+
+.video-status-overlay p {
+    color: white;
+    margin: 0;
+    font-weight: 600;
+}
+
 
 .video-cta-card:hover {
     border-color: var(--accent);
