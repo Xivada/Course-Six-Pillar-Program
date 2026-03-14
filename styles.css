@@ -405,6 +405,113 @@ h1 {
     background: rgba(30, 77, 90, 0.05);
 }
 
+/* Premium Audio Player Card */
+.audio-player-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(204, 158, 77, 0.2);
+    border-radius: 32px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 
+        0 20px 40px rgba(30, 77, 90, 0.1),
+        0 1px 2px rgba(204, 158, 77, 0.1) inset;
+    position: relative;
+    overflow: hidden;
+    margin: 2rem 0;
+    transition: var(--transition);
+}
+
+.audio-player-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.audio-player-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(30, 77, 90, 0.15);
+    border-color: rgba(217, 119, 6, 0.4);
+}
+
+.audio-visualizer-sim {
+    height: 140px;
+    background: linear-gradient(135deg, var(--primary) 0%, #0c2a33 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.audio-waves {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 60px;
+}
+
+.audio-wave-bar {
+    width: 6px;
+    background: linear-gradient(to top, var(--accent), #fcd34d);
+    border-radius: 12px;
+    height: 20px;
+    animation: audioPulse 1.2s infinite ease-in-out;
+}
+
+.audio-wave-bar:nth-child(2) { height: 40px; animation-delay: 0.1s; }
+.audio-wave-bar:nth-child(3) { height: 30px; animation-delay: 0.2s; }
+.audio-wave-bar:nth-child(4) { height: 50px; animation-delay: 0.3s; }
+.audio-wave-bar:nth-child(5) { height: 25px; animation-delay: 0.4s; }
+
+@keyframes audioPulse {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(1.8); }
+}
+
+.audio-meta h3 {
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.audio-meta p {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.audio-controls-wrapper {
+    width: 100%;
+}
+
+.premium-audio-element {
+    width: 100%;
+    height: 44px;
+    border-radius: 12px;
+}
+
+/* Chrome native audio customization (best effort) */
+.premium-audio-element::-webkit-media-controls-panel {
+    background: rgba(30, 77, 90, 0.05);
+}
+
+.premium-audio-element::-webkit-media-controls-play-button {
+    background-color: var(--primary);
+    border-radius: 50%;
+}
+
 /* Video CTA Card (Fallback) */
 .video-cta-card {
     background: linear-gradient(135deg, rgba(30, 77, 90, 0.05) 0%, rgba(204, 158, 77, 0.05) 100%);
@@ -418,56 +525,6 @@ h1 {
     display: block;
     cursor: pointer;
 }
-
-/* Premium Video Player */
-.video-wrapper {
-    position: relative;
-    width: 100%;
-    margin: 2rem 0;
-    border-radius: 24px;
-    overflow: hidden;
-    background: #000;
-    box-shadow: var(--shadow-deep);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* If it's an audio-only MP4 from NotebookLM, make the background pleasant */
-.premium-video {
-    width: 100%;
-    display: block;
-    border-radius: 24px;
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, var(--deep-blue), #001a33);
-    object-fit: contain;
-}
-
-.video-status-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(30, 77, 90, 0.95);
-    padding: 2rem;
-    border-radius: 24px;
-    text-align: center;
-    pointer-events: none;
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--accent);
-    z-index: 5;
-    transition: opacity 0.5s ease;
-}
-
-.premium-video:not([src=""]),
-.premium-video[src]:not([src*="undefined"]) ~ .video-status-overlay {
-    opacity: 0;
-}
-
-.video-status-overlay p {
-    color: white;
-    margin: 0;
-    font-weight: 600;
-}
-
 
 .video-cta-card:hover {
     border-color: var(--accent);
