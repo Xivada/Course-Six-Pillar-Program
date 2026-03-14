@@ -371,3 +371,92 @@ h1 {
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow);
 }
+
+/* --- Added Styles --- */
+
+/* Sidebar Sub-Navigation */
+.sub-nav {
+    list-style: none;
+    margin: 0.5rem 0 0 1.5rem;
+    padding: 0;
+    display: none;
+    border-left: 1px solid var(--border);
+}
+
+.nav-links li:has(.active) + .sub-nav,
+.nav-links li.active + .sub-nav {
+    display: block;
+}
+
+.sub-nav li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition);
+    border-radius: 8px;
+    margin-bottom: 2px;
+}
+
+.sub-nav li a:hover,
+.sub-nav li a.active {
+    color: var(--primary);
+    background: rgba(30, 77, 90, 0.05);
+}
+
+/* Video CTA Card */
+.video-cta-card {
+    background: linear-gradient(135deg, rgba(30, 77, 90, 0.05) 0%, rgba(204, 158, 77, 0.05) 100%);
+    border: 2px dashed var(--border);
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+    margin: 2rem 0;
+    transition: var(--transition);
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.video-cta-card:hover {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(30, 77, 90, 0.08) 0%, rgba(204, 158, 77, 0.08) 100%);
+    transform: translateY(-5px);
+}
+
+.video-cta-icon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.video-cta-card h3 {
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.video-cta-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.video-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.video-cta-card:hover .video-cta-button {
+    background: var(--primary-hover);
+    box-shadow: var(--shadow-glow);
+}
